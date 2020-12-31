@@ -4,26 +4,45 @@ import com.example.http_hos.ResourceTable;
 import com.example.httplibrary.utils.AsyncHttpClient;
 import com.example.httplibrary.utils.JsonHttpResponseHandler;
 import com.example.httplibrary.utils.RequestHandle;
+import com.example.httplibrary.utils.RequestParams;
 import com.google.gson.JsonObject;
 import cz.msebera.android.httpclient.Header;
 import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.content.Intent;
+import ohos.hiviewdfx.HiLog;
+import ohos.hiviewdfx.HiLogLabel;
 
 public class MainAbilitySlice extends AbilitySlice {
+    private HiLogLabel label=new HiLogLabel(HiLog.DEBUG,00*00101,"test-async-http");
     @Override
     public void onStart(Intent intent) {
         super.onStart(intent);
         super.setUIContent(ResourceTable.Layout_ability_main);
+        String url="http://apis.juhe.cn/simpleWeather/query";
+        String key="32becf485f7f174d4385957b62f28f61";
         AsyncHttpClient client=new AsyncHttpClient();
+        RequestParams params=new RequestParams();
+        params.put("city","西安");
+        params.put("key",key);
         RequestHandle requestHandle = client.get("", new JsonHttpResponseHandler(){
             @Override
-            public void onSuccess(int statusCode, Header[] headers, JsonObject response) {
-                super.onSuccess(statusCode, headers, response);
+            public void onSuccess(int statusCode, Header[] headers, String responseString) {
+                super.onSuccess(statusCode, headers, responseString);
+                HiLog.error(label,"zel-onSuccess:"+responseString,responseString);
+                getUITaskDispatcher().asyncDispatch(new Runnable() {
+                    @Override
+                    public void run() {
+                        //更新UI
+//                        tvResult.setText(responseString);
+                    }
+                });
             }
 
             @Override
-            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JsonObject errorResponse) {
-                super.onFailure(statusCode, headers, throwable, errorResponse);
+            public void onFailure(int statusCode, Header[] headers, String errorResponse, Throwable throwable) {
+                super.onFailure(statusCode, headers, errorResponse, throwable);
+                HiLog.error(label,"zel-onFailure:"+errorResponse,errorResponse);
+
             }
         });
     };

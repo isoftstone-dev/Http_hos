@@ -14,6 +14,63 @@
   },
   "deviceConfig": {},
   "module": {
+    "reqPermissions": [
+      {
+        "name": "ohos.permission.INTERNET",
+        "reason": "",
+        "usedScene": {
+          "ability": [
+            "com.example.ohosdemo.MainAbility",
+            "com.example.ohosdemo.slice.MainAbilitySlice"
+          ],
+          "when": "always"
+        }
+      },
+      {
+        "name": "ohos.permission.GET_NETWORK_INFO",
+        "reason": "",
+        "usedScene": {
+          "ability": [
+            "com.example.ohosdemo.MainAbility",
+            "com.example.ohosdemo.slice.MainAbilitySlice"
+          ],
+          "when": "always"
+        }
+      },
+      {
+        "name": "ohos.permission.SET_NETWORK_INFO",
+        "reason": "",
+        "usedScene": {
+          "ability": [
+            "com.example.ohosdemo.MainAbility",
+            "com.example.ohosdemo.slice.MainAbilitySlice"
+          ],
+          "when": "always"
+        }
+      },
+      {
+        "name": "ohos.permission.READ_MEDIA",
+        "reason": "",
+        "usedScene": {
+          "ability": [
+            "com.example.ohosdemo.MainAbility",
+            "com.example.ohosdemo.slice.MainAbilitySlice"
+          ],
+          "when": "always"
+        }
+      },
+      {
+        "name": "ohos.permission.WRITE_MEDIA",
+        "reason": "",
+        "usedScene": {
+          "ability": [
+            "com.example.ohosdemo.MainAbility",
+            "com.example.ohosdemo.slice.MainAbilitySlice"
+          ],
+          "when": "always"
+        }
+      }
+    ],
     "package": "com.example.http_hos",
     "name": ".MyApplication",
     "deviceType": [
